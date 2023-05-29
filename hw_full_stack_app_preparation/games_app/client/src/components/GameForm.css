@@ -1,0 +1,25 @@
+form {
+  margin-top: 20px;
+}
+
+input {
+  margin: 0.2em 1.5em 0.2em 0.4em;
+}
+
+input[type=number], input[type=text] {
+  border-radius: 3px;
+  padding: 5px;
+  border-style: none;
+}
+
+input[type=number] {
+  width: 40px;
+}
+
+input[type=submit] {
+  display: block;
+  border-radius: 5px;
+  background-color: #9172ff;
+  padding: 4px 10px 6px;
+  margin: 1em 0;
+}
