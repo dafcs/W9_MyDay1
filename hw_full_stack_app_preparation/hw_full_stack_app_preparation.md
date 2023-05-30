@@ -26,7 +26,7 @@ Draw a diagram showing the dataflow through the application starting with a form
 ### Questions
 
 1. What is responsible for defining the routes of the `games` resource?
-    create_router.js
+    server.js
 
 2. What do you notice about the folder structure?  Whats the client responsible for? Whats the server responsible for?
     client is responsible for the handling the intake and display of the data
