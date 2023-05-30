@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const createRouter = require('./helpers/create_router.js')
 
 const teas = [
   { name: "Early Grey", brand: "Twinings" },
@@ -31,42 +32,8 @@ app.listen(9000, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
 
-  app.get("/api/teas",(req,res) => {
-    res.json(teas)
-  })
+const teasRouter = createRouter(teas)
+const biscuitsRouter = createRouter(biscuits)
+app.use('/api/teas',teasRouter)
+app.use('/api/biscuits',biscuitsRouter)
 
-  app.get("/api/teas/:id",(req,res) => {
-    res.json(teas[req.params.id])
-  })
-
-  app.post("/api/teas",(req,res) => {
-    // console.log(`req.body`,req.body)
-    teas.push(req.body)
-    res.json(teas)
-  })
-
-  //delete
-  app.delete("/api/teas/:id",(req,res) => {
-    teas.splice(req.params.id,1)
-
-    res.json(teas)
-  })
-  
-  //update
-  app.put("/api/teas/:id",(req,res) => {
-    teas.splice(req.params.id,1,req.body)
-    // teas.push(req.body)
-    // teas[req.params.id] = req.body
-    res.json(teas)
-  })
-
-  app.get("/api/biscuits",(req,res) => {
-    res.json(biscuits)
-  })
-
-
-// Update:
-// handle a put request made to /api/teas/:id
-// update the appropriate tea object in the array with the new tea object sent on the request’s body object
-// send back all the teas data as JSON
-// Test each of the routes with Insomnia
